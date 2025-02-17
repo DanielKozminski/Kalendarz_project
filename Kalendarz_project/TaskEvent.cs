@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kalendarz_project
 {
-    public static class ProjectList
+    class TaskEvent : Event
     {
 
     }
