@@ -8,6 +8,24 @@ namespace Kalendarz_project
 {
     class CalendarEvent : Event
     {
+        public override string Name {  get; set; }
+        public override string Description {  get; set; }
+        public override DateTime Start {  get; set; }
+        public override DateTime End { get; set; }
 
+        public CalendarEvent(string name,string description) 
+        {
+            
+        }
+        public override void StartSet(DateTime start)
+        {
+            start= DateTime.Now;
+            this.Start = start;
+        }
+        public override void EndSet(DateTime end)
+        {
+            end = DateTime.Now;
+            this.End = end;
+        }
     }
 }
