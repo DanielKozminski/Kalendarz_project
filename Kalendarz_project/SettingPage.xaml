@@ -9,6 +9,6 @@
       Title="SettingPage">
 
     <Grid>
-        
+        <Label>Setting</Label>
     </Grid>
 </Page>

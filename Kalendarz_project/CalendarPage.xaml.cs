@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Kalendarz_project
 {
     /// <summary>
-    /// Logika interakcji dla klasy Kalendarz.xaml
+    /// Logika interakcji dla klasy CalendarPage.xaml
     /// </summary>
-    public partial class Kalendarz : Page
+    public partial class CalendarPage : Page
     {
-        public Kalendarz()
+        public CalendarPage()
         {
             InitializeComponent();
         }

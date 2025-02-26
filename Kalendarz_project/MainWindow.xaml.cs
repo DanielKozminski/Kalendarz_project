@@ -20,5 +20,21 @@ namespace Kalendarz_project
         {
             InitializeComponent();
         }
+        public void Main_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new MainPage());
+        }
+        public void Calendar_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new CalendarPage());
+        }
+        public void Project_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new ProjectPage());
+        }
+        public void Setting_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new SettingPage());
+        }
     }
 }

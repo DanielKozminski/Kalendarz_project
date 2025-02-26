@@ -9,6 +9,6 @@
       Title="ProjectPage">
 
     <Grid>
-        
+        <Label>Project</Label>
     </Grid>
 </Page>
