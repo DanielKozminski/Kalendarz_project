@@ -19,6 +19,7 @@ namespace Kalendarz_project
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.Navigate(new MainPage());
         }
         public void Main_Click(object sender, RoutedEventArgs e)
         {

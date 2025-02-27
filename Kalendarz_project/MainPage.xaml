@@ -7,17 +7,28 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MainPage">
-
-    <Grid>
+    <Page.Resources>
+        <Style x:Key="MainGrid" TargetType="Grid">
+            <Setter Property="Background" Value="Gray"/>
+        </Style>
+        <Style  TargetType="Grid">
+            
+        </Style>
+    </Page.Resources>
+    <Grid Style="{StaticResource MainGrid}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0">
-                       
-        </Grid>
-        <Grid Grid.Column="1">
-            
-        </Grid>
+        <Border BorderBrush="Black" BorderThickness="2" Grid.Column="0">
+            <Grid>
+                <Grid></Grid>
+            </Grid>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="2" Grid.Column="1">
+            <Grid>
+
+            </Grid>
+        </Border>
     </Grid>
 </Page>
