@@ -7,8 +7,29 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ProjectPage">
-
+    <Page.Resources>
+        <Style x:Key="Grids" TargetType="Grid">
+            
+        </Style>
+        <Style x:Key="Borders" TargetType="Border">
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="2"/>
+        </Style>
+    </Page.Resources>
     <Grid>
-        <Label>Project</Label>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="0" Style="{StaticResource Borders}">
+            <Grid>
+
+            </Grid>
+        </Border>
+        <Border Grid.Column="1" Style="{StaticResource Borders}">
+            <Grid>
+
+            </Grid>
+        </Border>
     </Grid>
 </Page>
