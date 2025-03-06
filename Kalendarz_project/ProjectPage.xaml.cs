@@ -24,5 +24,20 @@ namespace Kalendarz_project
         {
             InitializeComponent();
         }
+        private void BlockLoad()
+        {
+            foreach(Project project in ProjectList.AllProjects)
+            {
+                Border border = new Border();
+                StackPanel block = new StackPanel();
+                border.Height = 50;
+                block.Width = border.Width;
+                block.Height = border.Height;
+                Label label = new Label();
+                label.Height = 10;
+
+                
+            }
+        }
     }
 }

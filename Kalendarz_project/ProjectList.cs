@@ -8,6 +8,6 @@ namespace Kalendarz_project
 {
     public static class ProjectList
     {
-
+        public static List<Project> AllProjects { get; set; }
     }
 }
