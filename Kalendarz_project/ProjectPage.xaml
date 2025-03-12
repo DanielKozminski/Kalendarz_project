@@ -14,6 +14,7 @@
         <Style x:Key="Borders" TargetType="Border">
             <Setter Property="BorderBrush" Value="Black"/>
             <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Margin" Value="5"/>
         </Style>
     </Page.Resources>
     <Grid>
@@ -21,9 +22,16 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
-        <Border Grid.Column="0" Style="{StaticResource Borders}">
+        <Border Grid.Column="0" Style="{StaticResource Borders}" Margin="0">
             <Grid>
-                <ScrollViewer>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0">
+                        <Button Click="New_Project_Click">Dodaj Projekt</Button>
+                    </StackPanel>
+                    <ScrollViewer Grid.Row="1">
                 <StackPanel x:Name="LeftPanel" Orientation="Vertical">
                         <Border Height="100" Style="{StaticResource Borders}" Margin="5">
                             <StackPanel Height="100" Orientation="Vertical">
@@ -43,7 +51,7 @@
                 </ScrollViewer>
             </Grid>
         </Border>
-        <Border Grid.Column="1" Style="{StaticResource Borders}">
+        <Border Grid.Column="1" Style="{StaticResource Borders}" Margin="0">
             <Grid>
 
             </Grid>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,6 +24,7 @@ namespace Kalendarz_project
         public ProjectPage()
         {
             InitializeComponent();
+            BlockLoad();
         }
         private void BlockLoad()
         {
@@ -30,14 +32,40 @@ namespace Kalendarz_project
             {
                 Border border = new Border();
                 StackPanel block = new StackPanel();
-                border.Height = 50;
+                border.Style = (Style)FindResource("Borders");
+                border.Height = 100;
                 block.Width = border.Width;
-                block.Height = border.Height;
-                Label label = new Label();
-                label.Height = 10;
-
-                
+                block.Height = 100;
+                Label Namelabel = new Label();
+                Label ShortDescription = new Label();
+                Label Status = new Label();
+                Button open = new Button();
+                Namelabel.Content = "Nazwa: "+project.Name;
+                ShortDescription.Content = "Opis: " + project.ShortDescription;
+                Status.Content = "Status: "+ project.Status;
+                open.Content = "otwórz";
+                open.Click += Open_click;
+                open.Tag = project;
+                open.Height = 20;
+                block.Children.Add(Namelabel);
+                block.Children.Add(ShortDescription);
+                block.Children.Add(Status);
+                block.Children.Add(open);
+                border.Child = block;
+                LeftPanel.Children.Add(border);
             }
+        }
+        private void Open_click(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            if(clickedButton?.Tag is Project project)
+            {
+                MessageBox.Show(project.Name);
+            }      
+        }
+        private void New_Project_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("dodajesz klase");
         }
     }
 }
