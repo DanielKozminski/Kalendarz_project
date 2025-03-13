@@ -33,20 +33,7 @@
                     </StackPanel>
                     <ScrollViewer Grid.Row="1">
                 <StackPanel x:Name="LeftPanel" Orientation="Vertical">
-                        <Border Height="100" Style="{StaticResource Borders}" Margin="5">
-                            <StackPanel Height="100" Orientation="Vertical">
-                                <Label>
-                                    Kalendarz
-                                </Label>
-                                <Label>
-                                    Pomocnik, planer , kalendarz
-                                </Label>
-                                <Label>
-                                    W toku
-                                </Label>
-                                <Button>Otwórz</Button>
-                            </StackPanel>
-                        </Border>
+                        
                     </StackPanel>
                 </ScrollViewer>
             </Grid>

@@ -15,15 +15,26 @@ namespace Kalendarz_project
         public string LongDescription {  get; set; }
         public string Status { get; set; }
         public ObservableCollection<Task> Tasks= new ObservableCollection<Task>();
-        public Project(string name,int iD, string shortDescription, string longDescription, string status)
+        public Project(string name, string shortDescription, string longDescription, string status)
         {
             Name = name;
             ShortDescription = shortDescription;
             LongDescription = longDescription;
             Status = status;
-            ID= iD;
+            ID= Setid();
         }
-
+        private int Setid()
+        {
+            if(ProjectList.AllProjects.Count == 0)
+            {
+                ID = 1;
+            }
+            else
+            {
+                ID = ProjectList.AllProjects.Count()+1;
+            }
+            return ID; 
+        }
         public void Add_Task(Task task)
         {
             Tasks.Add(task);

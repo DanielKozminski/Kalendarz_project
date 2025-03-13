@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kalendarz_project"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1400">
+        Title="MainWindow" Height="800" Width="1400"
+        ResizeMode="CanMinimize">
     <Window.Resources>
         <Style x:Key="Button" TargetType="Button">
             <Setter Property="BorderBrush" Value="Black"/>

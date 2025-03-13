@@ -43,7 +43,7 @@ namespace Kalendarz_project
                 Namelabel.Content = "Nazwa: "+project.Name;
                 ShortDescription.Content = "Opis: " + project.ShortDescription;
                 Status.Content = "Status: "+ project.Status;
-                open.Content = "otwórz";
+                open.Content = "Otwórz";
                 open.Click += Open_click;
                 open.Tag = project;
                 open.Height = 20;
@@ -60,12 +60,36 @@ namespace Kalendarz_project
             Button clickedButton = sender as Button;
             if(clickedButton?.Tag is Project project)
             {
-                MessageBox.Show(project.Name);
+                MessageBox.Show($"Nazwa:{project.Name}; ID:{project.ID}");
             }      
         }
         private void New_Project_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("dodajesz klase");
+            ProjectList.ListAdd(new Project("Added class","Created class", "new created class","Planowany"));
+            Project project = ProjectList.AllProjects[ProjectList.AllProjects.Count-1];
+            Border border = new Border();
+            StackPanel block = new StackPanel();
+            border.Style = (Style)FindResource("Borders");
+            border.Height = 100;
+            block.Width = border.Width;
+            block.Height = 100;
+            Label Namelabel = new Label();
+            Label ShortDescription = new Label();
+            Label Status = new Label();
+            Button open = new Button();
+            Namelabel.Content = "Nazwa: " + project.Name;
+            ShortDescription.Content = "Opis: " + project.ShortDescription;
+            Status.Content = "Status: " + project.Status;
+            open.Content = "Otwórz";
+            open.Click += Open_click;
+            open.Tag = project;
+            open.Height = 20;
+            block.Children.Add(Namelabel);
+            block.Children.Add(ShortDescription);
+            block.Children.Add(Status);
+            block.Children.Add(open);
+            border.Child = block;
+            LeftPanel.Children.Add(border);
         }
     }
 }
