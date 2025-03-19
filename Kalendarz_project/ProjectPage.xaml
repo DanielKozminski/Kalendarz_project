@@ -29,7 +29,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="0">
-                        <Button Click="New_Project_Click">Dodaj Projekt</Button>
+                    <Button Click="New_Project_Click">Nowy Projekt</Button>
                     </StackPanel>
                     <ScrollViewer Grid.Row="1">
                 <StackPanel x:Name="LeftPanel" Orientation="Vertical">
@@ -40,7 +40,80 @@
         </Border>
         <Border Grid.Column="1" Style="{StaticResource Borders}" Margin="0">
             <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                   <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" BorderBrush="Black" BorderThickness="0,0,1,0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="4*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border>
+                                
+                            </Border>
+                            <Border>
+                                <Grid></Grid>
+                            </Border>
+                        </Grid>
+                        <Border Grid.Row="1" Style="{StaticResource Borders}" Margin="20">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="6*"/>
+                                </Grid.RowDefinitions>
+                                <Border BorderBrush="Black" BorderThickness="0,0,0,1" Grid.Row="0">
+                                    <Label Padding="20,0,0,0" FontWeight="Bold" FontSize="15">Długi opis:</Label>
+                                </Border>
+                                <Border Grid.Row="1" BorderBrush="Black" BorderThickness="0,1,0,0">
+                                    <Grid>
+                                        <TextBlock FontSize="14" TextWrapping="Wrap" Padding="5,0,5,5">680 znaków</TextBlock>
+                                    </Grid>
+                                    
+                                </Border>
+                            </Grid>
+                        </Border>
+                        <Border Grid.Row="2" Style="{StaticResource Borders}" Margin="10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="20"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <StackPanel Grid.Row="0">
+                                            <Button>Nowy Task</Button>
+                                        </StackPanel>
+                                        <ScrollViewer Grid.Row="1">
+                                            <StackPanel Orientation="Vertical"  x:Name="TaskPanel">
 
+                                            </StackPanel>
+                                        </ScrollViewer>
+                                    </Grid>
+                                </Border>
+                                <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1,0,0,0">
+                                    
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Border>
+                <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1,0,0,0">
+                    <Grid>
+                        
+                    </Grid>
+                </Border>
             </Grid>
         </Border>
     </Grid>
