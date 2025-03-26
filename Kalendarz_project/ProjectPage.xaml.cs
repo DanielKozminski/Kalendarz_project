@@ -91,5 +91,30 @@ namespace Kalendarz_project
             border.Child = block;
             LeftPanel.Children.Add(border);
         }
+        private void Status_Change_Click(object sender, EventArgs e)
+        {
+            
+        }
+        private void NewTask_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void OpenTsak_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void Edit_Project_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void Delete_Project_Click(Object sender, EventArgs e)
+        {
+
+        }
+        private void Task_Load()
+        {
+
+        }
+
     }
 }

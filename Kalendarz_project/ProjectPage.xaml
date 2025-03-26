@@ -30,10 +30,10 @@
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="0">
                     <Button Click="New_Project_Click">Nowy Projekt</Button>
-                    </StackPanel>
-                    <ScrollViewer Grid.Row="1">
-                <StackPanel x:Name="LeftPanel" Orientation="Vertical">
-                        
+                </StackPanel>
+                <ScrollViewer Grid.Row="1">
+                    <StackPanel x:Name="LeftPanel" Orientation="Vertical">
+
                     </StackPanel>
                 </ScrollViewer>
             </Grid>
@@ -56,11 +56,20 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Border>
-                                
+                            <Border Grid.Column="0" Style="{StaticResource Borders}" Margin="10">
+                                <TextBlock x:Name="NameTextBlock" Padding="5,0,5,0" FontWeight="Bold" FontSize="17" TextWrapping="Wrap" TextAlignment="Center"></TextBlock>
                             </Border>
-                            <Border>
-                                <Grid></Grid>
+                            <Border Grid.Column="1" Style="{StaticResource Borders}" Margin="10">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock x:Name="StatusTextBlock" FontWeight="Bold" FontSize="16" Padding="0,9,0,0" TextAlignment="Center">Satus: </TextBlock>
+                                    <Border BorderBrush="Black" BorderThickness="0,2,0,0" Grid.Row="1">
+                                        <Button Margin="0">Zmień Status</Button>
+                                    </Border>
+                                </Grid>
                             </Border>
                         </Grid>
                         <Border Grid.Row="1" Style="{StaticResource Borders}" Margin="20">
@@ -74,7 +83,7 @@
                                 </Border>
                                 <Border Grid.Row="1" BorderBrush="Black" BorderThickness="0,1,0,0">
                                     <Grid>
-                                        <TextBlock FontSize="14" TextWrapping="Wrap" Padding="5,0,5,5">680 znaków</TextBlock>
+                                        <TextBlock x:Name="LDTextBlock" FontSize="14" TextWrapping="Wrap" Padding="5,0,5,5">680 znaków</TextBlock>
                                     </Grid>
                                     
                                 </Border>
@@ -93,7 +102,7 @@
                                             <RowDefinition Height="*"/>
                                         </Grid.RowDefinitions>
                                         <StackPanel Grid.Row="0">
-                                            <Button>Nowy Task</Button>
+                                            <Button Click="">Nowy Task</Button>
                                         </StackPanel>
                                         <ScrollViewer Grid.Row="1">
                                             <StackPanel Orientation="Vertical"  x:Name="TaskPanel">
