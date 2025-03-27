@@ -60,7 +60,10 @@ namespace Kalendarz_project
             Button clickedButton = sender as Button;
             if(clickedButton?.Tag is Project project)
             {
-                MessageBox.Show($"Nazwa:{project.Name}; ID:{project.ID}");
+                StatusTextBlock.Text = "Statu: " + project.Status;
+                NameTextBlock.Text = "Nazwa Projektu:\n"+project.Name;
+                LDTextBlock.Text = project.LongDescription;
+                StatusChangeButton.Tag = clickedButton.Tag;
             }      
         }
         private void New_Project_Click(object sender, RoutedEventArgs e)
@@ -93,7 +96,22 @@ namespace Kalendarz_project
         }
         private void Status_Change_Click(object sender, EventArgs e)
         {
-            
+            Button button = sender as Button;
+            StatusChangeWindow statusChangeWindow = new StatusChangeWindow();
+            statusChangeWindow.ShowDialog();
+            if(button?.Tag is Project project)
+            {
+                switch (statusChangeWindow.status)
+                {
+                    case 0:
+                        return;
+                        break;
+                    case 1:
+                        project.Status = "Wtrakcie";
+                        break;
+
+                }
+            }
         }
         private void NewTask_Click(object sender, EventArgs e)
         {

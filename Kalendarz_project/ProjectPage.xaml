@@ -67,7 +67,7 @@
                                     </Grid.RowDefinitions>
                                     <TextBlock x:Name="StatusTextBlock" FontWeight="Bold" FontSize="16" Padding="0,9,0,0" TextAlignment="Center">Satus: </TextBlock>
                                     <Border BorderBrush="Black" BorderThickness="0,2,0,0" Grid.Row="1">
-                                        <Button Margin="0">Zmień Status</Button>
+                                        <Button Margin="0" Click="Status_Change_Click" x:Name="StatusChangeButton">Zmień Status</Button>
                                     </Border>
                                 </Grid>
                             </Border>
@@ -102,7 +102,7 @@
                                             <RowDefinition Height="*"/>
                                         </Grid.RowDefinitions>
                                         <StackPanel Grid.Row="0">
-                                            <Button Click="">Nowy Task</Button>
+                                            <Button >Nowy Task</Button>
                                         </StackPanel>
                                         <ScrollViewer Grid.Row="1">
                                             <StackPanel Orientation="Vertical"  x:Name="TaskPanel">
