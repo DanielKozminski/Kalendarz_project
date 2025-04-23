@@ -68,6 +68,7 @@ namespace Kalendarz_project
         }
         private void New_Project_Click(object sender, RoutedEventArgs e)
         {
+
             ProjectList.ListAdd(new Project("Added class","Created class", "new created class","Planowany"));
             Project project = ProjectList.AllProjects[ProjectList.AllProjects.Count-1];
             Border border = new Border();
