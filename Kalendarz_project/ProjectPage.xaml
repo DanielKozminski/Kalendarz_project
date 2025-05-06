@@ -102,7 +102,7 @@
                                             <RowDefinition Height="*"/>
                                         </Grid.RowDefinitions>
                                         <StackPanel Grid.Row="0">
-                                            <Button >Nowy Task</Button>
+                                            <Button x:Name="NewTaskButton">Nowy Task</Button>
                                         </StackPanel>
                                         <ScrollViewer Grid.Row="1">
                                             <StackPanel x:Name="TaskPanel" Orientation="Vertical">

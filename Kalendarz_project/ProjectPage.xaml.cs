@@ -42,9 +42,9 @@ namespace Kalendarz_project
                 Button open = new Button();
                 Namelabel.Content = "Nazwa: "+project.Name;
                 ShortDescription.Content = "Opis: " + project.ShortDescription;
-                Status.Content = "Status: "+ project.Status;
+                Status.Content = "Status: "+ project.StatusName;
                 open.Content = "Otwórz";
-                open.Click += Open_click;
+                open.Click += Open_Project_Click;
                 open.Tag = project;
                 open.Height = 20;
                 block.Children.Add(Namelabel);
@@ -55,15 +55,16 @@ namespace Kalendarz_project
                 LeftPanel.Children.Add(border);
             }
         }
-        private void Open_click(object sender, RoutedEventArgs e)
+        private void Open_Project_Click(object sender, RoutedEventArgs e)
         {
             Button clickedButton = sender as Button;
             if(clickedButton?.Tag is Project project)
             {
-                StatusTextBlock.Text = "Status: " + project.Status;
+                StatusTextBlock.Text = "Status: " + project.StatusName;
                 NameTextBlock.Text = "Nazwa Projektu:\n"+project.Name;
                 LDTextBlock.Text = project.LongDescription;
                 StatusChangeButton.Tag = clickedButton.Tag;
+                NewTaskButton.Tag = clickedButton.Tag;
             }      
         }
         private void New_Project_Click(object sender, RoutedEventArgs e)
@@ -83,9 +84,9 @@ namespace Kalendarz_project
             Button open = new Button();
             Namelabel.Content = "Nazwa: " + project.Name;
             ShortDescription.Content = "Opis: " + project.ShortDescription;
-            Status.Content = "Status: " + project.Status;
+            Status.Content = "Status: " + project.StatusName;
             open.Content = "Otwórz";
-            open.Click += Open_click;
+            open.Click += Open_Project_Click;
             open.Tag = project;
             open.Height = 20;
             block.Children.Add(Namelabel);
@@ -102,10 +103,10 @@ namespace Kalendarz_project
             statusChangeWindow.ShowDialog();
             if(button?.Tag is Project project)
             {
-                if (statusChangeWindow.status != "Can")
+                if (statusChangeWindow.status != 0)
                 {
-                    project.Status = statusChangeWindow.status;
-                    StatusTextBlock.Text = "Status: " + project.Status;
+                    project.status_change(statusChangeWindow.status);
+                    StatusTextBlock.Text = "Status: " + project.StatusName;
                     LeftPanel.Children.Clear();
                     BlockLoad();
                 }

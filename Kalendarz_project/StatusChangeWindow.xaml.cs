@@ -19,7 +19,7 @@ namespace Kalendarz_project
     /// </summary>
     public partial class StatusChangeWindow : Window
     {
-        public string status = "";
+        public int status = 0;
         public StatusChangeWindow()
         {
             InitializeComponent();
@@ -28,22 +28,22 @@ namespace Kalendarz_project
 
         private void Button_Finish_Click(object sender, RoutedEventArgs e)
         {
-            status = "Zakończony";
+            status = 3;
             this.Close();
         }
         private void Button_Paused_Click(object sender, RoutedEventArgs e)
         {
-            status = "Wstrzymano";
+            status = 2;
             this.Close();
         }
         private void Button_Active_Click(object sender, RoutedEventArgs e)
         {
-            status = "W trakcie";
+            status = 1;
             this.Close();
         }
         private void Button_Cancel_Click(object sender, RoutedEventArgs e)
         {
-            status = "Can";
+            status = 0;
             this.Close();
         }
     }
