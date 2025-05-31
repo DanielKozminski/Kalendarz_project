@@ -96,7 +96,7 @@ namespace Kalendarz_project
             border.Child = block;
             LeftPanel.Children.Add(border);
         }
-        private void Status_Change_Click(object sender, EventArgs e)
+        private void StatusProject_Change_Click(object sender, EventArgs e)
         {
             Button button = sender as Button;
             StatusChangeWindow statusChangeWindow = new StatusChangeWindow();
@@ -108,6 +108,22 @@ namespace Kalendarz_project
                     project.status_change(statusChangeWindow.status);
                     StatusTextBlock.Text = "Status: " + project.StatusName;
                     LeftPanel.Children.Clear();
+                    BlockLoad();
+                }
+            }
+        }
+        private void StatusTask_Change_Click(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            StatusChangeWindow statusChangeWindow = new StatusChangeWindow();
+            statusChangeWindow.ShowDialog();
+            if (button?.Tag is Task task)
+            {
+                if (statusChangeWindow.status != 0)
+                {
+                    task.status_change(statusChangeWindow.status);
+                    StatusTextBlock.Text = "Status: " + task.StatusName; // Do zmiany
+                    LeftPanel.Children.Clear(); //Do zmiany
                     BlockLoad();
                 }
             }

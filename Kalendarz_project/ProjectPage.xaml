@@ -67,7 +67,7 @@
                                     </Grid.RowDefinitions>
                                     <TextBlock x:Name="StatusTextBlock" FontWeight="Bold" FontSize="16" Padding="0,9,0,0" TextAlignment="Center">Satus: </TextBlock>
                                     <Border BorderBrush="Black" BorderThickness="0,2,0,0" Grid.Row="1">
-                                        <Button Margin="0" Click="Status_Change_Click" x:Name="StatusChangeButton">Zmień Status</Button>
+                                        <Button Margin="0" Click="StatusProject_Change_Click" x:Name="StatusChangeButton">Zmień Status</Button>
                                     </Border>
                                 </Grid>
                             </Border>

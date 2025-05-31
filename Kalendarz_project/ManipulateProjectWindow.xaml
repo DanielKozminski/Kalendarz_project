@@ -10,21 +10,35 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="3*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0">
-            <Label>Nazwa</Label>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions></Grid.RowDefinitions>
+            <TextBlock>Nazwa</TextBlock>
             <TextBox Text="{Binding ProjectName}"/>
-        </StackPanel>
-        <StackPanel Grid.Row="1">
-            <Label>Długi opis</Label>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                
+            </Grid.RowDefinitions>
+            <TextBlock>Długi opis</TextBlock>
             <TextBox Text="{Binding LongDescription}"/>
-        </StackPanel>
-        <StackPanel Grid.Row="2">
-            <Label>Krótki opis</Label>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                
+            </Grid.RowDefinitions>
+            <TextBlock>Krótki opis</TextBlock>
             <TextBox Text="{Binding ShortDescription}"/>
-            <Button Click="Confirm_Click_Button">Zatwierdź</Button>
-            <Button Click="Cancel_Click_Button">Annuluj</Button>
-        </StackPanel>
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Click="Confirm_Click_Button" Grid.Column="0">Zatwierdź</Button>
+            <Button Click="Cancel_Click_Button" Grid.Column="1">Annuluj</Button>
+        </Grid>
     </Grid>
 </Window>
