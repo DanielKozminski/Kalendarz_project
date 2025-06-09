@@ -142,7 +142,33 @@ namespace Kalendarz_project
         }
         private void NewTask_Click(object sender, EventArgs e)
         {
+            Button clickedButton = sender as Button;
+            if (clickedButton?.Tag is Project project)
+            {
 
+                Border border = new Border();
+                StackPanel block = new StackPanel();
+                border.Style = (Style)FindResource("Borders");
+                border.Height = 70;
+                block.Width = border.Width;
+                block.Height = 70;
+                Label Namelabel = new Label();
+                Label Status = new Label();
+                Button open = new Button();
+                Namelabel.Content = "Nazwa: " + task.Name;
+                Status.Content = "Status: " + task.StatusName;
+                Status.Foreground = task.ColourName();
+                open.Content = "Otwórz";
+                open.Click += OpenTask_Click;
+                open.Tag = task;
+                open.Height = 20;
+                block.Children.Add(Namelabel);
+                block.Children.Add(Status);
+                block.Children.Add(open);
+                border.Child = block;
+                TaskPanel.Children.Add(border);
+            }
+            
         }
         private void OpenTask_Click(object sender, EventArgs e)
         {
@@ -195,28 +221,25 @@ namespace Kalendarz_project
         private void Task_Load(Project project)
         {
             TaskPanel.Children.Clear();
-            foreach (Project project in ProjectList.AllProjects)
+            foreach (Task task in project.Tasks)
             {
                 Border border = new Border();
                 StackPanel block = new StackPanel();
                 border.Style = (Style)FindResource("Borders");
-                border.Height = 100;
+                border.Height = 70;
                 block.Width = border.Width;
-                block.Height = 100;
+                block.Height = 70;
                 Label Namelabel = new Label();
-                Label ShortDescription = new Label();
                 Label Status = new Label();
                 Button open = new Button();
-                Namelabel.Content = "Nazwa: " + project.Name;
-                ShortDescription.Content = "Opis: " + project.ShortDescription;
-                Status.Content = "Status: " + project.StatusName;
-                Status.Foreground = project.ColourName();
+                Namelabel.Content = "Nazwa: " + task.Name;
+                Status.Content = "Status: " + task.StatusName;
+                Status.Foreground = task.ColourName();
                 open.Content = "Otwórz";
-                open.Click += Open_Project_Click;
-                open.Tag = project;
+                open.Click += OpenTask_Click;
+                open.Tag = task;
                 open.Height = 20;
                 block.Children.Add(Namelabel);
-                block.Children.Add(ShortDescription);
                 block.Children.Add(Status);
                 block.Children.Add(open);
                 border.Child = block;
