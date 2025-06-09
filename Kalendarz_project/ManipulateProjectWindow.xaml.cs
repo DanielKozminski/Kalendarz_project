@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace Kalendarz_project
 {
@@ -19,19 +20,26 @@ namespace Kalendarz_project
     /// </summary>
     public partial class ManipulateProjectWindow : Window
     {
-        public bool Function;
+        public bool Function = false;
         public string ShortDescription {  get; set; }
         public string LongDescription {  get; set; }
         public string ProjectName {  get; set; }
-        public ManipulateProjectWindow()
+
+        public ManipulateProjectWindow(Project project)
         {
             InitializeComponent();
-            this.DataContext = this;
+            if (project != null)
+            {
+                NameB.Text = project.Name;
+                LDB.Text = project.LongDescription;
+                SDB.Text = project.ShortDescription;
+            }
         }
         private void Confirm_Click_Button(object sender, RoutedEventArgs e)
         {
-            
-
+            ShortDescription = SDB.Text;
+            LongDescription = LDB.Text;
+            ProjectName = NameB.Text;
             Function = true;
             
             this.Close();

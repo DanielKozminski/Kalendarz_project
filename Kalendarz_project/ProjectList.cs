@@ -14,5 +14,9 @@ namespace Kalendarz_project
         {
             AllProjects.Add(project);
         }
+        public static void ListRemove(Project project)
+        {
+            AllProjects.Remove(project);
+        }
     }
 }

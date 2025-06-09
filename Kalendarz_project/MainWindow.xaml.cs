@@ -19,12 +19,12 @@ namespace Kalendarz_project
         public MainWindow()
         {
             InitializeComponent();
-            ProjectList.ListAdd(new Project("Project1", "Krótki opis", "dłógi opis", "Planowany"));
-            ProjectList.ListAdd(new Project("Project2", "Krótki opis", "dłógi opis", "Planowany"));
-            ProjectList.ListAdd(new Project("Project3", "Krótki opis", "dłógi opis", "Planowany"));
-            ProjectList.ListAdd(new Project("Project4", "Krótki opis", "dłógi opis", "Planowany"));
-            ProjectList.ListAdd(new Project("Project5", "Krótki opis", "dłógi opis", "Planowany"));
-            ProjectList.ListAdd(new Project("Project6", "Krótki opis", "dłógi opis", "Planowany"));
+            ProjectList.ListAdd(new Project("Project1", "Krótki opis", "dłógi opis"));
+            ProjectList.ListAdd(new Project("Project2", "Krótki opis", "dłógi opis"));
+            ProjectList.ListAdd(new Project("Project3", "Krótki opis", "dłógi opis"));
+            ProjectList.ListAdd(new Project("Project4", "Krótki opis", "dłógi opis"));
+            ProjectList.ListAdd(new Project("Project5", "Krótki opis", "dłógi opis"));
+            ProjectList.ListAdd(new Project("Project6", "Krótki opis", "dłógi opis"));
             MainFrame.Navigate(new MainPage());
         }
         public void Main_Click(object sender, RoutedEventArgs e)

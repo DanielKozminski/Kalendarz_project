@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace Kalendarz_project
 {
@@ -44,6 +45,29 @@ namespace Kalendarz_project
                     StatusName = "Planowany";
                     break;
             }
+        }
+        public SolidColorBrush ColourName()
+        {
+            SolidColorBrush colour;
+            switch (this.StatusTag)
+            {
+                case 0:
+                    colour = new SolidColorBrush(Colors.Yellow);
+                    break;
+                case 1:
+                    colour = new SolidColorBrush(Colors.Green);
+                    break;
+                case 2:
+                    colour = new SolidColorBrush(Colors.Red);
+                    break;
+                case 3:
+                    colour = new SolidColorBrush(Colors.Blue);
+                    break;
+                default:
+                    colour = new SolidColorBrush(Colors.Yellow);
+                    break;
+            }
+            return colour;
         }
     }
 }

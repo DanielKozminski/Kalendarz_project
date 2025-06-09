@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls.Primitives;
+using System.Windows.Media;
 
 namespace Kalendarz_project
 {
@@ -17,7 +18,7 @@ namespace Kalendarz_project
         public string StatusName {  get; set; }
         public int StatusTag { get; set; }
         public ObservableCollection<Task> Tasks= new ObservableCollection<Task>();
-        public Project(string name, string shortDescription, string longDescription, string status)
+        public Project(string name, string shortDescription, string longDescription)
         {
             Name = name;
             ShortDescription = shortDescription;
@@ -62,6 +63,29 @@ namespace Kalendarz_project
                     StatusName = "Planowany";
                     break;
             }
+        }
+        public SolidColorBrush ColourName()
+        {
+            SolidColorBrush colour;
+            switch (this.StatusTag)
+            {
+                case 0:
+                    colour = new SolidColorBrush(Colors.Orange);
+                    break;
+                case 1:
+                    colour = new SolidColorBrush(Colors.Green);
+                    break;
+                case 2:
+                    colour = new SolidColorBrush(Colors.Red);
+                    break;
+                case 3:
+                    colour = new SolidColorBrush(Colors.Blue);
+                    break;
+                default:
+                    colour = new SolidColorBrush(Colors.Orange);
+                    break;
+            }
+            return colour;
         }
     }
 }
