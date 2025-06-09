@@ -1,0 +1,44 @@
+﻿<Window x:Class="Kalendarz_project.ManipulateProjectWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kalendarz_project"
+        mc:Ignorable="d"
+        Title="ManipulateProjectWindow" Height="350" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0">Nazwa</TextBlock>
+            <TextBox Grid.Row="1" x:Name="NameB"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0">Opis</TextBlock>
+            <TextBox Grid.Row="1" x:Name="DB"/>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Click="Confirm_Click_Button" Grid.Column="0">Zatwierdź</Button>
+            <Button Click="Cancel_Click_Button" Grid.Column="1">Anuluj</Button>
+        </Grid>
+    </Grid>
+</Window>
+

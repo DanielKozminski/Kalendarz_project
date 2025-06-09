@@ -22,6 +22,7 @@ namespace Kalendarz_project
     /// </summary>
     public partial class ProjectPage : Page
     {
+        Project SelectedProject = new Project("", "", "");
         public ProjectPage()
         {
             InitializeComponent();
@@ -30,33 +31,37 @@ namespace Kalendarz_project
         }
         private void BlockLoad()
         {
-            LeftPanel.Children.Clear();
-            foreach (Project project in ProjectList.AllProjects)
+            if (ProjectList.AllProjects.Count > 0)
             {
-                Border border = new Border();
-                StackPanel block = new StackPanel();
-                border.Style = (Style)FindResource("Borders");
-                border.Height = 100;
-                block.Width = border.Width;
-                block.Height = 100;
-                Label Namelabel = new Label();
-                Label ShortDescription = new Label();
-                Label Status = new Label();
-                Button open = new Button();
-                Namelabel.Content = "Nazwa: "+project.Name;
-                ShortDescription.Content = "Opis: " + project.ShortDescription;
-                Status.Content = "Status: "+ project.StatusName;
-                Status.Foreground = project.ColourName();
-                open.Content = "Otwórz";
-                open.Click += Open_Project_Click;
-                open.Tag = project;
-                open.Height = 20;
-                block.Children.Add(Namelabel);
-                block.Children.Add(ShortDescription);
-                block.Children.Add(Status);
-                block.Children.Add(open);
-                border.Child = block;
-                LeftPanel.Children.Add(border);
+                LeftPanel.Children.Clear();
+                foreach (Project project in ProjectList.AllProjects)
+                {
+                    Border border = new Border();
+                    StackPanel block = new StackPanel();
+                    border.Style = (Style)FindResource("Borders");
+                    border.Height = 100;
+                    block.Width = border.Width;
+                    block.Height = 100;
+                    Label Namelabel = new Label();
+                    Label ShortDescription = new Label();
+                    Label Status = new Label();
+                    Button open = new Button();
+                    Namelabel.Content = "Nazwa: " + project.Name;
+                    ShortDescription.Content = "Opis: " + project.ShortDescription;
+                    Status.Content = "Status: " + project.StatusName;
+                    Status.Foreground = project.ColourName();
+                    open.Content = "Otwórz";
+                    open.Click += Open_Project_Click;
+                    open.Tag = project;
+                    open.Height = 20;
+                    block.Children.Add(Namelabel);
+                    block.Children.Add(ShortDescription);
+                    block.Children.Add(Status);
+                    block.Children.Add(open);
+                    border.Child = block;
+                    LeftPanel.Children.Add(border);
+                }
+            
             }
         }
         private void Open_Project_Click(object sender, RoutedEventArgs e)
@@ -72,6 +77,7 @@ namespace Kalendarz_project
                 NewTaskButton.Tag = clickedButton.Tag;
                 EditButton.Tag = clickedButton.Tag;
                 DeleteButton.Tag = clickedButton.Tag;
+                SelectedProject = project;
             }      
         }
         private void New_Project_Click(object sender, RoutedEventArgs e)
@@ -136,7 +142,7 @@ namespace Kalendarz_project
                     task.status_change(statusChangeWindow.status);
                     StatusTextBlock.Text = "Status: " + task.StatusName; // Do zmiany
                     StatusTextBlock.Foreground = task.ColourName(); //Do zmiany
-                    Task_Load();
+                    Task_Load(SelectedProject);
                 }
             }
         }
@@ -145,28 +151,35 @@ namespace Kalendarz_project
             Button clickedButton = sender as Button;
             if (clickedButton?.Tag is Project project)
             {
-
-                Border border = new Border();
-                StackPanel block = new StackPanel();
-                border.Style = (Style)FindResource("Borders");
-                border.Height = 70;
-                block.Width = border.Width;
-                block.Height = 70;
-                Label Namelabel = new Label();
-                Label Status = new Label();
-                Button open = new Button();
-                Namelabel.Content = "Nazwa: " + task.Name;
-                Status.Content = "Status: " + task.StatusName;
-                Status.Foreground = task.ColourName();
-                open.Content = "Otwórz";
-                open.Click += OpenTask_Click;
-                open.Tag = task;
-                open.Height = 20;
-                block.Children.Add(Namelabel);
-                block.Children.Add(Status);
-                block.Children.Add(open);
-                border.Child = block;
-                TaskPanel.Children.Add(border);
+                ManipulateTaskWindow twindow = new ManipulateTaskWindow(null);
+                twindow.ShowDialog();
+                if(twindow.Function == true)
+                {
+                    project.Add_Task(new Task(twindow.TaskName, twindow.Description));
+                    Task task = project.Tasks[project.Tasks.Count - 1];
+                    Border border = new Border();
+                    StackPanel block = new StackPanel();
+                    border.Style = (Style)FindResource("Borders");
+                    border.Height = 70;
+                    block.Width = border.Width;
+                    block.Height = 70;
+                    Label Namelabel = new Label();
+                    Label Status = new Label();
+                    Button open = new Button();
+                    Namelabel.Content = "Nazwa: " + task.Name;
+                    Status.Content = "Status: " + task.StatusName;
+                    Status.Foreground = task.ColourName();
+                    open.Content = "Otwórz";
+                    open.Click += OpenTask_Click;
+                    open.Tag = task;
+                    open.Height = 20;
+                    block.Children.Add(Namelabel);
+                    block.Children.Add(Status);
+                    block.Children.Add(open);
+                    border.Child = block;
+                    TaskPanel.Children.Add(border);
+                }
+                
             }
             
         }
@@ -220,43 +233,50 @@ namespace Kalendarz_project
         }
         private void Task_Load(Project project)
         {
-            TaskPanel.Children.Clear();
-            foreach (Task task in project.Tasks)
+            if(project.Tasks.Count > 0)
             {
-                Border border = new Border();
-                StackPanel block = new StackPanel();
-                border.Style = (Style)FindResource("Borders");
-                border.Height = 70;
-                block.Width = border.Width;
-                block.Height = 70;
-                Label Namelabel = new Label();
-                Label Status = new Label();
-                Button open = new Button();
-                Namelabel.Content = "Nazwa: " + task.Name;
-                Status.Content = "Status: " + task.StatusName;
-                Status.Foreground = task.ColourName();
-                open.Content = "Otwórz";
-                open.Click += OpenTask_Click;
-                open.Tag = task;
-                open.Height = 20;
-                block.Children.Add(Namelabel);
-                block.Children.Add(Status);
-                block.Children.Add(open);
-                border.Child = block;
-                TaskPanel.Children.Add(border);
+                TaskPanel.Children.Clear();
+                foreach (Task task in project.Tasks)
+                {
+                    Border border = new Border();
+                    StackPanel block = new StackPanel();
+                    border.Style = (Style)FindResource("Borders");
+                    border.Height = 70;
+                    block.Width = border.Width;
+                    block.Height = 70;
+                    Label Namelabel = new Label();
+                    Label Status = new Label();
+                    Button open = new Button();
+                    Namelabel.Content = "Nazwa: " + task.Name;
+                    Status.Content = "Status: " + task.StatusName;
+                    Status.Foreground = task.ColourName();
+                    open.Content = "Otwórz";
+                    open.Click += OpenTask_Click;
+                    open.Tag = task;
+                    open.Height = 20;
+                    block.Children.Add(Namelabel);
+                    block.Children.Add(Status);
+                    block.Children.Add(open);
+                    border.Child = block;
+                    TaskPanel.Children.Add(border);
+                }
             }
+            
         }
         private void Project_Base_Select()
         {
-            Project project = ProjectList.AllProjects.First();
-            StatusTextBlock.Text = "Status: " + project.StatusName;
-            StatusTextBlock.Foreground = project.ColourName();
-            NameTextBlock.Text = "Nazwa Projektu:\n" + project.Name;
-            LDTextBlock.Text = project.LongDescription;
-            StatusChangeButton.Tag = project;
-            NewTaskButton.Tag = project;
-            EditButton.Tag = project;
-            DeleteButton.Tag = project;
+            if(ProjectList.AllProjects.Count > 0)
+            {
+                Project project = ProjectList.AllProjects.First();
+                StatusTextBlock.Text = "Status: " + project.StatusName;
+                StatusTextBlock.Foreground = project.ColourName();
+                NameTextBlock.Text = "Nazwa Projektu:\n" + project.Name;
+                LDTextBlock.Text = project.LongDescription;
+                StatusChangeButton.Tag = project;
+                NewTaskButton.Tag = project;
+                EditButton.Tag = project;
+                DeleteButton.Tag = project;
+            }   
         }
     }
 }

@@ -9,9 +9,10 @@ using System.Windows.Media;
 
 namespace Kalendarz_project
 {
-    public class Task : INotifyPropertyChanged
+    public class Task 
     {
         public string Name { get; set; }
+        public int ID { get; set; }
         public string Description { get; set; }
         public string StatusName {  get; set; }
         public int StatusTag { get; set; }
@@ -19,7 +20,8 @@ namespace Kalendarz_project
         {
             Name= name;
             Description= desricption;
-            StatusTag= 0;
+            StatusName= "git";
+            status_change(0);
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
