@@ -6,18 +6,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Kalendarz_project
 {
     public class Project
     {
-        public string Name { get; set; }
         public int ID { get; set; }
+        public string Name { get; set; }
         public string ShortDescription { get; set; }
-        public string LongDescription {  get; set; }
-        public string StatusName {  get; set; }
+        public string LongDescription { get; set; }
+        public string StatusName { get; set; }
         public int StatusTag { get; set; }
-        public ObservableCollection<Task> Tasks= new ObservableCollection<Task>();
+
+        public ICollection<Task> Tasks { get; set; } = new ObservableCollection<Task>();
         public Project(string name, string shortDescription, string longDescription)
         {
             Name = name;

@@ -11,11 +11,14 @@ namespace Kalendarz_project
 {
     public class Task 
     {
-        public string Name { get; set; }
         public int ID { get; set; }
+        public string Name { get; set; }
         public string Description { get; set; }
-        public string StatusName {  get; set; }
+        public string StatusName { get; set; }
         public int StatusTag { get; set; }
+
+        public int ProjectID { get; set; }
+        public Project Project { get; set; }
         public Task(string name,string desricption) 
         {
             Name= name;
